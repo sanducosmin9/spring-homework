@@ -51,7 +51,7 @@ public class TraineeDaoTest {
         var trainee = getTrainee();
         traineeDao.update(trainee);
         Trainee updatedTrainee = (Trainee) traineeDao.findById(1);
-        Assertions.assertThat(updatedTrainee.getAddress()).isEqualTo(trainee.getAddress())
+        Assertions.assertThat(updatedTrainee.getAddress()).isEqualTo(trainee.getAddress());
     }
 
     public Trainee getTrainee() {
