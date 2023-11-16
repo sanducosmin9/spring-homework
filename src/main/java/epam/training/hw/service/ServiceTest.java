@@ -10,6 +10,6 @@ public class ServiceTest {
     private final TraineeDao traineeDao;
 
     public void test() {
-        traineeDao.displayStorage();
+//        traineeDao.displayStorage();
     }
 }

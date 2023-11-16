@@ -5,6 +5,7 @@ import epam.training.hw.entities.Trainer;
 import epam.training.hw.entities.Training;
 import epam.training.hw.entities.TrainingType;
 import jakarta.annotation.PostConstruct;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
@@ -15,11 +16,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Component
+@Slf4j
 public class Storage {
 
     public final Map<Integer, Trainer> trainerMap;
     public final Map<Integer, Trainee> traineeMap;
     public final Map<Integer, Training> trainingMap;
+    public int lastId = 10;
 
     public Storage() {
         trainerMap = new HashMap<>();
@@ -32,6 +35,7 @@ public class Storage {
         loadDataFromCSV("./trainer.csv", "trainer");
         loadDataFromCSV("./trainee.csv", "trainee");
         loadDataFromCSV("./training.csv", "training");
+        log.info("--------Storage initialized---------");
     }
 
     public void loadDataFromCSV(String filePath, String entityType) {
@@ -74,6 +78,7 @@ public class Storage {
             }
         } catch (IOException e) {
             e.printStackTrace();
+            log.error("IO exception for the " + entityType + ".csv");
         }
     }
 }
