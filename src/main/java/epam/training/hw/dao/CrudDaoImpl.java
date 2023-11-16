@@ -30,14 +30,9 @@ public class CrudDaoImpl implements CrudDao<Entity>{
 
     @Override
     public void add(Entity entity) {
-        if(entity.getId() >= storage.lastId) {
-            log.info("Entity with id " + entity.getId() + " was added successfully");
-            entityMap.put(entity.getId(), entity);
-        } else {
-            log.info("Entity with id " + entity.getId() + " already exists. Creating entity with new id");
-            entity.setId(++storage.lastId);
-            entityMap.put(storage.lastId, entity);
-        }
+        log.info("Creating entity with new id " + ++storage.lastId);
+        entity.setId(storage.lastId);
+        entityMap.put(storage.lastId, entity);
     }
 
     @Override
