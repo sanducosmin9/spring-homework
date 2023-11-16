@@ -1,12 +1,11 @@
 package epam.training.hw.dao;
 
-import epam.training.hw.entities.Trainee;
-import epam.training.hw.entities.Trainer;
-import epam.training.hw.entities.Training;
-import epam.training.hw.entities.TrainingType;
+import epam.training.hw.entities.*;
 import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Value;
+
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -19,9 +18,18 @@ import java.util.Map;
 @Slf4j
 public class Storage {
 
-    public final Map<Integer, Trainer> trainerMap;
-    public final Map<Integer, Trainee> traineeMap;
-    public final Map<Integer, Training> trainingMap;
+    @Value("${trainer.path}")
+    private String trainerFilePath;
+
+    @Value("${trainee.path}")
+    private String traineeFilePath;
+
+    @Value("${training.path}")
+    private String trainingFilePath;
+
+    public final Map<Integer, Entity> trainerMap;
+    public final Map<Integer, Entity> traineeMap;
+    public final Map<Integer, Entity> trainingMap;
     public int lastId = 10;
 
     public Storage() {
@@ -32,9 +40,9 @@ public class Storage {
 
     @PostConstruct
     public void initialize(){
-        loadDataFromCSV("./trainer.csv", "trainer");
-        loadDataFromCSV("./trainee.csv", "trainee");
-        loadDataFromCSV("./training.csv", "training");
+        loadDataFromCSV(trainerFilePath, "trainer");
+        loadDataFromCSV(traineeFilePath, "trainee");
+        loadDataFromCSV(trainingFilePath, "training");
         log.info("--------Storage initialized---------");
     }
 

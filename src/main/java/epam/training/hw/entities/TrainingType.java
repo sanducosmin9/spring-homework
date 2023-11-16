@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class TrainingType {
+public class TrainingType implements Entity {
     private int id;
     private String name;
 }

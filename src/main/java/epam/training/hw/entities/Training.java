@@ -5,7 +5,7 @@ import lombok.Data;
 import java.time.LocalDate;
 
 @Data
-public class Training {
+public class Training implements Entity {
     private int id;
     private int traineeId;
     private int trainerId;
