@@ -1,0 +1,11 @@
+id,traineeId,trainerId,trainingName,trainingTypeId,date,duration
+1,1,2,Running,1,2023-01-15,60
+2,3,4,Yoga,4,2023-02-20,90
+3,5,6,HIIT,5,2023-03-10,45
+4,7,8,Weightlifting,3,2023-04-05,75
+5,9,10,Pilates,6,2023-05-12,60
+6,2,1,Cardio,2,2023-06-18,30
+7,4,3,Boxing,7,2023-07-25,45
+8,6,5,Swimming,9,2023-08-30,90
+9,8,7,CrossFit,8,2023-09-15,60
+10,10,9,Strength Training,10,2023-10-20,75
